@@ -1,3 +1,5 @@
+import "reflect-metadata"
+
 import { app } from '@config/server'
 
 app.listen(3000, () => {

@@ -4,6 +4,8 @@ import { routers } from '@routes/routes'
 
 const app = express()
 
+app.use(routers)
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use((request: Request, response: Response, next) => {
@@ -12,7 +14,5 @@ app.use((request: Request, response: Response, next) => {
   response.append('Access-Control-Allow-Headers', 'Content-Type')
   next()
 })
-
-app.use(routers)
 
 export { app }
