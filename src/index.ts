@@ -1,7 +1,11 @@
-import "reflect-metadata"
+import { aplicationServer } from '@config/server'
+import { AppDataSource } from './data-source'
 
-import { app } from '@config/server'
+AppDataSource.initialize().then(() => {
+  const app = aplicationServer
 
-app.listen(3000, () => {
-  console.log('Express server listening on port 3000')
+  app.listen(process.env.PORT, () => {
+    console.log(`PostgreSQL está rodando na porta ${process.env.DB_PORT}`)
+    console.log(`Express está rodando na porta ${process.env.PORT}`)
+  })
 })

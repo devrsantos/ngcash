@@ -1,18 +1,18 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
+
 import { routers } from '@routes/routes'
 
-const app = express()
+const aplicationServer = express()
 
-app.use(routers)
+aplicationServer.use(routers)
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-app.use((request: Request, response: Response, next) => {
-  response.append('Access-Control-Allow-Origin', ['*'])
+aplicationServer.use(bodyParser.urlencoded({ extended: true }))
+aplicationServer.use(bodyParser.json())
+aplicationServer.use((request: Request, response: Response, next) => {
   response.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   response.append('Access-Control-Allow-Headers', 'Content-Type')
   next()
 })
 
-export { app }
+export { aplicationServer }
