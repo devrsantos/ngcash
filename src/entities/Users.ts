@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Users')
+@Entity('users')
 export class User {
     @PrimaryGeneratedColumn()
     id: number
@@ -11,6 +11,5 @@ export class User {
     @Column({ type: 'text' })
     password: string
 
-    @Column({ type: 'number' })
-    accountld: number
+    // accountId: FK Accounts[id]
 }
