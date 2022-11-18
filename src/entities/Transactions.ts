@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Account } from "./Accounts";
 
 @Entity('transactions')
 export class Transaction {
@@ -11,7 +12,11 @@ export class Transaction {
     @Column({ type: 'text' })
       createdAt: string
 
-    // debitedAccountId —> FK Accounts[id]
+    @ManyToOne(() => Account, account => account.id)
+    @JoinColumn({ name: 'debitedAccountId' })
+    account: Account
 
-    // creditedAccountId —> FK Accounts[id]
+    @ManyToOne(() => Account, accounts => accounts.id)
+    @JoinColumn({ name: 'creditedAccountId' })
+    accounts: Account[]
 }
