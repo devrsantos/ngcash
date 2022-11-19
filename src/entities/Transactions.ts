@@ -1,7 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, CreateDateColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Account } from "./Accounts";
 
-@Entity('transactions')
+@Entity('Transactions')
 export class Transaction {
     @PrimaryGeneratedColumn()
     id: number
@@ -9,14 +9,14 @@ export class Transaction {
     @Column({ type: 'money' })
       value: number
     
-    @Column({ type: 'text' })
-      createdAt: string
+    @CreateDateColumn()
+      createdAt: Date
 
     @ManyToOne(() => Account, account => account.id)
     @JoinColumn({ name: 'debitedAccountId' })
-    account: Account
+    debitedAccountId: Account[]
 
-    @ManyToOne(() => Account, accounts => accounts.id)
+    @ManyToOne(() => Account, account => account.id)
     @JoinColumn({ name: 'creditedAccountId' })
-    accounts: Account[]
+    creditedAccountId: Account[]
 }

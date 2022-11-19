@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Account } from "./Accounts";
 
-@Entity('users')
+@Entity('Users')
 export class User {
     @PrimaryGeneratedColumn()
     id: number
@@ -15,5 +15,5 @@ export class User {
     // accountId: FK Accounts[id]
     @OneToOne(() => Account, account => account.id)
     @JoinColumn({ name: 'accountId' })
-    account: Account
+    accountId: Account
 }

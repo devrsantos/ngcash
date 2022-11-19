@@ -18,7 +18,8 @@
         "baseUrl": ".",
         "paths": {
             "@config/*": ["./src/config/*"],
-            "@routes/*": ["./src/routes/*"]
+            "@routes/*": ["./src/routes/*"],
+            "@entities/*": ["./src/entities/*"],
         },
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
