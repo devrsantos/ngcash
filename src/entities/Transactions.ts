@@ -6,7 +6,7 @@ export class Transaction {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({ type: 'money' })
+    @Column({ type: 'decimal' })
       value: number
     
     @CreateDateColumn()
@@ -14,9 +14,9 @@ export class Transaction {
 
     @ManyToOne(() => Account, account => account.id)
     @JoinColumn({ name: 'debitedAccountId' })
-    debitedAccountId: Account[]
+    debitedAccountId: Transaction[]
 
     @ManyToOne(() => Account, account => account.id)
     @JoinColumn({ name: 'creditedAccountId' })
-    creditedAccountId: Account[]
+    creditedAccountId: Transaction[]
 }
